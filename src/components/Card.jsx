@@ -1,8 +1,8 @@
 import React from "react";
-import "./css/card.css";
+import "../style/card.scss";
 
 export default function Card(props) {
-  const classes = "card" + props.className;
+  const classes = "card " + props.className;
 
-  return <div className="classes">{props.children}</div>;
+  return <div className={classes}>{props.children}</div>;
 }
