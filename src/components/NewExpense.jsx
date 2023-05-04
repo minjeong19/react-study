@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/newExpense.scss";
+import "../style/NewExpense.scss";
 import ExpenseForm from "./ExpenseForm";
 
 export default function NewExpense(props) {

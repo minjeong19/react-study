@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ExpenseDate from "./ExpenseDate";
-import "../style/expenseItem.scss";
+import "../style/ExpenseItem.scss";
 import Card from "./Card";
 
 export default function ExpenseItem(props) {

@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/expenseDate.scss";
+import "../style/ExpenseDate.scss";
 
 export default function ExpenseDate(props) {
   const year = props.date.getFullYear();
