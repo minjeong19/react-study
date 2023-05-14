@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ExpenseItem from "./ExpenseItem";
 import "../style/Expenses.scss";
 import Card from "./Card";
 import ExpenseFilter from "./ExpenseFilter";
+import ExpensesList from "./ExpensesList";
 
 export default function Expenses(props) {
   const [filteredYear, setFilteredYear] = useState("2023");
@@ -20,20 +20,6 @@ export default function Expenses(props) {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 
-  // 컴포넌트 함수 자체 로직 생성
-  let expensesContent = <p>No expenses found.</p>;
-
-  if (filteredExpenses.length > 0) {
-    expensesContent = filteredExpenses.map((expense) => (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    ));
-  }
-
   return (
     <div>
       <Card className="expenses">
@@ -42,7 +28,7 @@ export default function Expenses(props) {
           onChangeFilter={filterChangeHandler}
         />
         {/* 동적인 요소를 사용하고 싶을 때 중괄효 {} */}
-        {expensesContent}
+        <ExpensesList items={filteredExpenses} />
       </Card>
     </div>
   );

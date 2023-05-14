@@ -10,17 +10,29 @@ export default function NewExpense(props) {
     };
     // console.log(expenseData);
     props.onAddExpense(expenseData);
+    setIsEditing(false);
   };
 
-  const [isClicked, setIsClicked] = useState(false);
-  const showAddExpense = () => {
-    setIsClicked(!isClicked);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const startEditingHandler = () => {
+    setIsEditing(true);
+  };
+
+  const stopEditingHandler = () => {
+    setIsEditing(false);
   };
   return (
     <div className="new-expense">
-      {/* isClicked 값에 따라 ExpenseForm 컴포넌트를 렌더링합니다. */}
-      {isClicked && <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />}
-      <button onClick={showAddExpense}>Add New Expense</button>
+      {!isEditing && (
+        <button onClick={startEditingHandler}>Add New Expense</button>
+      )}
+      {isEditing && (
+        <ExpenseForm
+          onSaveExpenseData={saveExpenseDataHandler}
+          onCancel={stopEditingHandler}
+        />
+      )}
     </div>
     // <div className="new-expense">
     //   <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />

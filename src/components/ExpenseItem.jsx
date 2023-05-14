@@ -11,13 +11,15 @@ export default function ExpenseItem(props) {
     console.log(title);
   };
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={props.date} />
-      <div className="expense-item__description">
-        <h1 className="title">{title}</h1>
-        <div className="price">${props.amount}</div>
-      </div>
-      <button onClick={clickHandler}>Change Title</button>
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={props.date} />
+        <div className="expense-item__description">
+          <h1 className="title">{title}</h1>
+          <div className="price">${props.amount}</div>
+        </div>
+        <button onClick={clickHandler}>Change Title</button>
+      </Card>
+    </li>
   );
 }
