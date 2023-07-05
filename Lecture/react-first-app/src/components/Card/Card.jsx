@@ -1,5 +1,5 @@
 import React from "react";
-import "../style/Card.scss";
+import "./Card.css";
 
 export default function Card(props) {
   const classes = "card " + props.className;
