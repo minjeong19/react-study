@@ -1,14 +1,17 @@
 import React from "react";
-
+import Todo from "../models/todo";
+import TodoItem from "./TodoItem";
 // 제네릭(FC)
 // Todos의 타입을 지정
 // React.FC = 함수형 컴포넌트로 동작한다는 걸 명확히 말함
 // <> props 정의한 객체
-const Todos: React.FC<{ items: string[] }> = (props) => {
+
+//
+const Todos: React.FC<{ items: Todo[] }> = (props) => {
   return (
     <ul>
       {props.items.map((i) => (
-        <li key={i}>{i}</li>
+        <TodoItem key={i.id} todoText={i.text} />
       ))}
     </ul>
   );
