@@ -1,7 +1,10 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import { TodosContext } from "../store/TodosContext";
 
 // 사용자에게 입력창 제공
-const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
+const NewTodo: React.FC = (prps) => {
+  const todosCtx = useContext(TodosContext);
+
   // 기본값을 직접 설정하지 않아서 오류남
   const todoTextInputRef = useRef<HTMLInputElement>(null);
 
@@ -16,7 +19,7 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
       alert("내용을 입력하세요");
       return;
     }
-    props.onAddTodo(enteredText);
+    todosCtx.addTodo(enteredText);
     todoTextInputRef.current!.value = "";
   };
   return (
