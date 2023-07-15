@@ -9,13 +9,15 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
     const enteredText = todoTextInputRef.current!.value;
-    console.log(enteredText);
+    // console.log(enteredText);
 
     // 공백을 제외하고 문자의 길이가 0 이면 경고
     if (enteredText.trim().length === 0) {
+      alert("내용을 입력하세요");
       return;
     }
     props.onAddTodo(enteredText);
+    todoTextInputRef.current!.value = "";
   };
   return (
     <form onSubmit={submitHandler}>

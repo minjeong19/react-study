@@ -13,10 +13,30 @@ function App() {
       return prevTodos.concat(newTodo);
     });
   };
+  const deleteTodoHandler = (todoId: string) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todo) => todo.id !== todoId);
+    });
+  };
+  const updateTodoHandler = (todoId: string, updateText: string) => {
+    setTodos((prevTodos) => {
+      return prevTodos.map((todo) => {
+        if (todo.id === todoId) {
+          return { ...todo, text: updateText };
+        }
+        return todo;
+      });
+    });
+  };
+
   return (
     <div>
       <NewTodo onAddTodo={addTodoHandler} />
-      <Todos items={todos} />
+      <Todos
+        items={todos}
+        onDeleteTodo={deleteTodoHandler}
+        onUpdateTodo={updateTodoHandler}
+      />
     </div>
   );
 }

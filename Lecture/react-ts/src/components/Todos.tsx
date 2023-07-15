@@ -7,11 +7,20 @@ import TodoItem from "./TodoItem";
 // <> props 정의한 객체
 
 //
-const Todos: React.FC<{ items: Todo[] }> = (props) => {
+const Todos: React.FC<{
+  items: Todo[];
+  onDeleteTodo: (id: string) => void;
+  onUpdateTodo: (id: string, updateText: string) => void;
+}> = (props) => {
   return (
     <ul>
       {props.items.map((i) => (
-        <TodoItem key={i.id} todoText={i.text} />
+        <TodoItem
+          key={i.id}
+          todoText={i.text}
+          onDeleteTodo={props.onDeleteTodo.bind(null, i.id)}
+          onUpdateTodo={props.onUpdateTodo.bind(null, i.id)}
+        />
       ))}
     </ul>
   );
