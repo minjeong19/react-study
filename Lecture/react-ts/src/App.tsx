@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Todos from "./components/Todos";
 import NewTodo from "./components/NewTodo";
 import TodosContextProvider from "./store/TodosContext";
